@@ -1,0 +1,3 @@
+C:/Users/91935/OneDrive/Desktop/Sparkathon demo/build/CMakeFiles/backend.dir
+C:/Users/91935/OneDrive/Desktop/Sparkathon demo/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/91935/OneDrive/Desktop/Sparkathon demo/build/CMakeFiles/ZERO_CHECK.dir

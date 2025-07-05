@@ -1,0 +1,12 @@
+/unified-sentinel-demo/
+/vcpkg/
+/build/
+/Debug/
+/Release/
+*.exe
+*.log
+*.obj
+*.dll
+node_modules/
+.DS_Store
+Thumbs.db
