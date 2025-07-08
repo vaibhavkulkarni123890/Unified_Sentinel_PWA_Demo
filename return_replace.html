@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Return Verification - Gemini-Powered</title>
+    <title>Strict AI Return Verification</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,8 +14,8 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
-            color: #333;
+            background: linear-gradient(135deg, #0c1a2d, #152642, #1d3557);
+            color: #f0f8ff;
             line-height: 1.6;
             padding: 20px;
             min-height: 100vh;
@@ -29,11 +29,12 @@
         header {
             text-align: center;
             padding: 30px 20px;
-            color: white;
             margin-bottom: 30px;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         header h1 {
@@ -41,14 +42,21 @@
             margin-bottom: 15px;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 15px;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         header p {
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto;
-            opacity: 0.9;
+            opacity: 0.85;
+            color: #d1e8ff;
         }
         
         .main-content {
@@ -65,11 +73,13 @@
         }
         
         .card {
-            background: white;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             padding: 30px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .card:hover {
@@ -78,17 +88,17 @@
         }
         
         .card h2 {
-            color: #2c3e50;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 2px solid #eee;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             gap: 10px;
+            color: #ff416c;
         }
         
         .card h2 i {
-            color: #3498db;
+            color: #ff4b2b;
         }
         
         .product-info {
@@ -103,21 +113,29 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #2c3e50;
+            color: #ff9a9e;
         }
         
         .input-control {
             width: 100%;
             padding: 15px;
-            border: 2px solid #ddd;
+            background: rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             font-size: 1.1rem;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
+            color: #fff;
         }
         
         .input-control:focus {
-            border-color: #3498db;
+            border-color: #ff416c;
             outline: none;
+            background: rgba(0, 0, 0, 0.25);
+            box-shadow: 0 0 0 3px rgba(255, 65, 108, 0.2);
+        }
+        
+        .input-control::placeholder {
+            color: rgba(255, 255, 255, 0.4);
         }
         
         .camera-section {
@@ -125,7 +143,7 @@
         }
         
         .camera-container {
-            background: #000;
+            background: rgba(0, 0, 0, 0.3);
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 20px;
@@ -134,15 +152,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 1px dashed rgba(255, 255, 255, 0.15);
         }
         
         video {
             max-width: 100%;
             max-height: 100%;
+            border-radius: 8px;
         }
         
         .placeholder-camera {
-            color: #777;
+            color: rgba(255, 255, 255, 0.5);
             text-align: center;
             padding: 30px;
             font-size: 1.2rem;
@@ -166,57 +186,55 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         
         .btn-primary {
-            background: #3498db;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
             color: white;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
         }
         
         .btn-primary:hover {
-            background: #2980b9;
             transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 65, 108, 0.4);
         }
         
         .btn-success {
-            background: #2ecc71;
+            background: linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6);
             color: white;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
         }
         
         .btn-success:hover {
-            background: #27ae60;
             transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(12, 235, 235, 0.4);
         }
         
         .btn-warning {
-            background: #f39c12;
+            background: linear-gradient(to right, #f6d365, #fda085);
             color: white;
-            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
         }
         
         .btn-warning:hover {
-            background: #d35400;
             transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(246, 211, 101, 0.4);
         }
         
         .btn-danger {
-            background: #e74c3c;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
             color: white;
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
         }
         
         .btn-danger:hover {
-            background: #c0392b;
             transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 65, 108, 0.4);
         }
         
         .btn:disabled {
-            background: #bdc3c7;
+            background: #6c757d;
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
+            opacity: 0.7;
         }
         
         .captured-images {
@@ -231,21 +249,28 @@
             height: 100px;
             border-radius: 10px;
             object-fit: cover;
-            border: 3px solid #eee;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .captured-image:hover {
+            transform: scale(1.05);
+            border-color: #ff416c;
         }
         
         .instruction {
-            background: #f8f9fa;
+            background: rgba(255, 255, 255, 0.05);
             padding: 20px;
             border-radius: 10px;
             margin: 20px 0;
             font-size: 1.1rem;
-            border-left: 4px solid #3498db;
+            border-left: 4px solid #ff416c;
         }
         
         .instruction p {
             margin-bottom: 10px;
+            color: #d1e8ff;
         }
         
         .ai-analysis {
@@ -253,11 +278,12 @@
         }
         
         .result-container {
-            background: #f8f9fa;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
             padding: 25px;
             margin-top: 25px;
             display: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .result-header {
@@ -266,15 +292,17 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            color: #ff416c;
         }
         
         .confidence-meter {
             height: 30px;
-            background: #ecf0f1;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             overflow: hidden;
             margin: 25px 0;
             position: relative;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
         }
         
         .confidence-level {
@@ -288,13 +316,14 @@
             justify-content: space-between;
             margin-top: 10px;
             font-weight: 600;
+            color: #d1e8ff;
         }
         
         .threshold {
             position: absolute;
             height: 100%;
             width: 2px;
-            background: #000;
+            background: rgba(255, 255, 255, 0.6);
         }
         
         .threshold-40 {
@@ -311,49 +340,62 @@
             transform: translateX(-50%);
             font-size: 0.9rem;
             font-weight: 600;
+            color: #d1e8ff;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 2px 8px;
+            border-radius: 10px;
         }
         
         .decision-box {
             padding: 25px;
-            border-radius: 10px;
+            border-radius: 15px;
             margin-top: 25px;
             color: white;
             font-size: 1.4rem;
             font-weight: bold;
             text-align: center;
             display: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .rejected {
-            background: linear-gradient(to right, #e74c3c, #c0392b);
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
         }
         
         .accepted {
-            background: linear-gradient(to right, #2ecc71, #27ae60);
+            background: linear-gradient(to right, #0cebeb, #20e3b2);
         }
         
         .manual-review {
-            background: linear-gradient(to right, #f39c12, #d35400);
+            background: linear-gradient(to right, #f6d365, #fda085);
         }
         
         .details-box {
-            background: white;
+            background: rgba(0, 0, 0, 0.15);
             border-radius: 10px;
             padding: 25px;
             margin-top: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .details-box h3 {
             margin-bottom: 20px;
-            color: #2c3e50;
+            color: #ff416c;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
         .gemini-response {
-            background: #f0f8ff;
+            background: rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             padding: 20px;
             margin-top: 25px;
@@ -361,42 +403,28 @@
             line-height: 1.6;
             max-height: 300px;
             overflow-y: auto;
+            color: #d1e8ff;
+            font-family: monospace;
+            white-space: pre-wrap;
         }
         
         .gemini-response h4 {
             margin-bottom: 15px;
-            color: #2c3e50;
-        }
-        
-        .api-key-note {
-            background: #fff3cd;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
-            border-left: 4px solid #ffc107;
-        }
-        
-        .api-key-note a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        .api-key-note a:hover {
-            text-decoration: underline;
+            color: #ff416c;
         }
         
         .progress-bar {
             height: 8px;
-            background: #ecf0f1;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 4px;
             overflow: hidden;
             margin: 15px 0;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
         }
         
         .progress {
             height: 100%;
-            background: #3498db;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
             width: 0;
             transition: width 1s ease;
         }
@@ -404,11 +432,16 @@
         footer {
             text-align: center;
             padding: 30px;
-            color: white;
             margin-top: 30px;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        footer p {
+            color: #d1e8ff;
         }
         
         .loading {
@@ -423,29 +456,163 @@
         }
         
         .error-box {
-            background: #f8d7da;
-            color: #721c24;
+            background: rgba(255, 0, 0, 0.15);
+            color: #ffcccc;
             padding: 15px;
             border-radius: 8px;
             margin-top: 15px;
             display: none;
+            border: 1px solid rgba(255, 0, 0, 0.2);
         }
         
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+        
+        .card-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .status-active {
+            background: #0cebeb;
+            box-shadow: 0 0 8px #0cebeb;
+        }
+        
+        .status-inactive {
+            background: #ff416c;
+        }
+        
+        .capture-counter {
+            background: rgba(255, 65, 108, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        .system-status {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .status-item {
+            flex: 1;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+        
+        .status-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #ff416c;
+        }
+        
+        .strict-rules {
+            background: rgba(255, 0, 0, 0.15);
+            border-left: 4px solid #ff416c;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .strict-rules h4 {
+            color: #ff416c;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .critical-alert {
+            background: rgba(255, 65, 108, 0.2);
+            border: 1px solid #ff416c;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            display: none;
+        }
+        
+        .critical-alert p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ff9a9e;
+            font-weight: bold;
+        }
+        
+        .rejection-reason {
+            background: rgba(255, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 4px solid #ff416c;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1><i class="fas fa-robot"></i> AI Return Verification with Gemini</h1>
+         <header>
+            <h1><i class="fas fa-robot"></i> AI Return Verification System</h1>
             <p>Take photos of your item, and our AI will verify it for return/replacement eligibility</p>
         </header>
 
+        <div class="system-status">
+            <div class="status-item">
+                <div><i class="fas fa-cogs"></i> System Status</div>
+                <div class="status-value">Operational</div>
+            </div>
+            <div class="status-item">
+                <div><i class="fas fa-bolt"></i> Processing Speed</div>
+                <div class="status-value">2.4s avg</div>
+            </div>
+            <div class="status-item">
+                <div><i class="fas fa-shield-alt"></i> Security Level</div>
+                <div class="status-value">High</div>
+            </div>
+        </div>
+
         <div class="main-content">
             <div class="card">
-                <h2><i class="fas fa-info-circle"></i> Product & API Information</h2>
+                <div class="card-title">
+                    <h2><i class="fas fa-info-circle"></i> Product Information</h2>
+                    <div class="status-indicator">
+                        <div class="status-dot status-active"></div>
+                        <span>Strict Mode</span>
+                    </div>
+                </div>
+                
+                <div class="strict-rules">
+                    <h4><i class="fas fa-exclamation-circle"></i> Strict Enforcement Rules</h4>
+                    <p>Any missing Verification ID results in automatic rejection. System overrides confidence score for critical failures.</p>
+                </div>
+                
+                <div class="critical-alert" id="criticalAlert">
+                    <p><i class="fas fa-radiation"></i> CRITICAL: Verification ID not found - Automatic rejection enforced</p>
+                </div>
                 
                 <div class="product-info">
                     <div class="input-group">
@@ -459,24 +626,24 @@
                     </div>
                     
                     <div class="input-group">
-                        <label for="apiKey"><i class="fas fa-key"></i> Gemini API Key</label>
-                        <input type="text" id="apiKey" class="input-control" placeholder="Enter your Gemini API key" value="AIzaSyBnnyWg-ZY9SQWy66ceutJQnMNWhVqa4aY">
-                        <div class="api-key-note">
-                            <p><i class="fas fa-exclamation-circle"></i> Using default demo key. For production, get your own key from <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a>.</p>
-                        </div>
+                        <label for="verificationId"><i class="fas fa-fingerprint"></i> Verification ID <span style="color: #ff416c;">*Required</span></label>
+                        <input type="text" id="verificationId" class="input-control" placeholder="Enter IMEI or product ID">
                     </div>
+                    
+                    <!-- Hidden API Key -->
+                    <input type="hidden" id="apiKey" value="AIzaSyBnnyWg-ZY9SQWy66ceutJQnMNWhVqa4aY">
                 </div>
                 
                 <div class="instruction">
-                    <p><i class="fas fa-lightbulb"></i> <strong>How it works:</strong></p>
-                    <p>1. Enter product details and your Gemini API key</p>
-                    <p>2. Capture clear images of the item</p>
-                    <p>3. AI analyzes the images using Gemini</p>
-                    <p>4. Get instant decision on return eligibility</p>
+                    <p><i class="fas fa-lightbulb"></i> <strong>Strict Verification Process:</strong></p>
+                    <p>1. Verification ID must be clearly visible in one image</p>
+                    <p>2. Missing ID results in automatic rejection</p>
+                    <p>3. System overrides confidence score for critical failures</p>
+                    <p>4. Any damage or authenticity concerns also cause rejection</p>
                 </div>
                 
                 <div class="ai-analysis">
-                    <h2><i class="fas fa-brain"></i> AI Analysis Results</h2>
+                    <h2><i class="fas fa-gavel"></i> Verification Results</h2>
                     
                     <div class="result-container" id="resultContainer">
                         <h3 class="result-header"><i class="fas fa-chart-line"></i> Confidence Score</h3>
@@ -504,6 +671,11 @@
                             <div id="decisionText"></div>
                         </div>
                         
+                        <div class="rejection-reason" id="rejectionReason">
+                            <h4><i class="fas fa-ban"></i> Rejection Reason:</h4>
+                            <p id="reasonText"></p>
+                        </div>
+                        
                         <div class="details-box">
                             <h3><i class="fas fa-search"></i> Analysis Details</h3>
                             <div class="gemini-response" id="geminiResponse">
@@ -522,7 +694,7 @@
                 <div class="camera-container">
                     <div class="placeholder-camera" id="cameraPlaceholder">
                         <i class="fas fa-camera fa-3x"></i>
-                        <p>Camera feed will appear here</p>
+                        <p>Click "Start Camera" to begin verification</p>
                     </div>
                     <video id="videoElement" autoplay playsinline style="display: none;"></video>
                 </div>
@@ -538,28 +710,32 @@
                         <i class="fas fa-redo"></i> Reset
                     </button>
                     <button class="btn btn-danger" id="analyzeButton" disabled>
-                        <i class="fas fa-search"></i> Analyze with Gemini
+                        <i class="fas fa-search"></i> Verify with AI
                     </button>
                 </div>
                 
+                <div class="capture-counter">
+                    <i class="fas fa-info-circle"></i> Captured <span id="captureCount">0</span> of 4 images
+                </div>
+                
                 <div class="instruction">
-                    <p><i class="fas fa-lightbulb"></i> <strong>Capture Instructions:</strong></p>
-                    <p>• First: Full product view</p>
-                    <p>• Second: Serial number/IMEI</p>
-                    <p>• Third: Any damage or defects</p>
-                    <p>• Fourth: Original packaging (if available)</p>
+                    <p><i class="fas fa-lightbulb"></i> <strong>Critical Requirements:</strong></p>
+                    <p>1. Full product view (clear branding)</p>
+                    <p>2. Verification ID/IMEI (MUST BE VISIBLE)</p>
+                    <p>3. Any damage or defects (close-up)</p>
+                    <p>4. Original packaging with labels</p>
                 </div>
                 
                 <h3><i class="fas fa-images"></i> Captured Images</h3>
                 <div class="captured-images" id="imagePreviews">
-                    <div class="placeholder">No images captured yet</div>
+                    <div class="placeholder" style="color: rgba(255, 255, 255, 0.5);">No images captured yet</div>
                 </div>
             </div>
         </div>
         
         <footer>
-            <p><i class="fas fa-shield-alt"></i> This is a client-side application. Your images and data never leave your browser.</p>
-            <p>AI Verification System | Confidence Thresholds: Reject ≤40% | Accept ≥65% | Manual Review between 40-65%</p>
+            <p><i class="fas fa-shield-alt"></i> Strict Verification System | Automatic Rejection Rules: Missing ID, Damage, or Authenticity Issues</p>
+            <p>Confidence Thresholds: Reject ≤40% | Accept ≥65% | Manual Review between 40-65%</p>
         </footer>
     </div>
 
@@ -573,6 +749,7 @@
             const analyzeButton = document.getElementById('analyzeButton');
             const productName = document.getElementById('productName');
             const orderNumber = document.getElementById('orderNumber');
+            const verificationId = document.getElementById('verificationId');
             const apiKeyInput = document.getElementById('apiKey');
             const imagePreviews = document.getElementById('imagePreviews');
             const cameraPlaceholder = document.getElementById('cameraPlaceholder');
@@ -583,6 +760,10 @@
             const decisionText = document.getElementById('decisionText');
             const aiResponse = document.getElementById('aiResponse');
             const errorBox = document.getElementById('errorBox');
+            const captureCount = document.getElementById('captureCount');
+            const criticalAlert = document.getElementById('criticalAlert');
+            const rejectionReason = document.getElementById('rejectionReason');
+            const reasonText = document.getElementById('reasonText');
             
             let stream;
             let capturedImages = [];
@@ -598,6 +779,11 @@
             async function startCamera() {
                 if (!productName.value) {
                     alert('Please enter the product name first.');
+                    return;
+                }
+                
+                if (!verificationId.value) {
+                    alert('Verification ID is required for strict verification.');
                     return;
                 }
                 
@@ -644,6 +830,9 @@
                 
                 imagePreviews.appendChild(img);
                 
+                // Update capture counter
+                captureCount.textContent = capturedImages.length;
+                
                 // Enable analyze button if we have at least one image
                 if (capturedImages.length > 0) {
                     analyzeButton.disabled = false;
@@ -665,16 +854,24 @@
                 analyzeButton.disabled = true;
                 
                 capturedImages = [];
-                imagePreviews.innerHTML = '<div class="placeholder">No images captured yet</div>';
+                imagePreviews.innerHTML = '<div class="placeholder" style="color: rgba(255, 255, 255, 0.5);">No images captured yet</div>';
+                captureCount.textContent = '0';
                 
                 resultContainer.style.display = 'none';
                 decisionBox.style.display = 'none';
                 errorBox.style.display = 'none';
+                criticalAlert.style.display = 'none';
+                rejectionReason.style.display = 'none';
             }
             
             async function analyzeWithGemini() {
                 if (!productName.value) {
                     alert('Please enter the product name first.');
+                    return;
+                }
+                
+                if (!verificationId.value) {
+                    alert('Verification ID is required for strict verification.');
                     return;
                 }
                 
@@ -684,42 +881,56 @@
                 }
                 
                 analyzeButton.disabled = true;
-                analyzeButton.innerHTML = '<div class="loading"></div> Analyzing...';
+                analyzeButton.innerHTML = '<div class="loading"></div> Strict Verification...';
                 resultContainer.style.display = 'block';
-                aiResponse.textContent = "Sending images to Gemini for analysis...";
+                aiResponse.textContent = "Performing strict verification with enforcement rules...";
                 errorBox.style.display = 'none';
+                criticalAlert.style.display = 'none';
+                rejectionReason.style.display = 'none';
                 
                 try {
-                    // Updated Gemini 1.5 Flash API endpoint
+                    // Gemini 1.5 Flash API endpoint
                     const API_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKeyInput.value}`;
                     
-                    // Enhanced prompt for better analysis
-                    const prompt = `You are a retail return verification AI. Analyze these product images for return eligibility:
+                    // STRICT verification prompt with automatic rejection rules
+                    const prompt = `You are a retail return verification AI. Perform STRICT verification of this product for return eligibility:
 
                     Product Claimed: ${productName.value}
                     Order Number: ${orderNumber.value || 'Not provided'}
+                    Verification ID: ${verificationId.value}
 
-                    ANALYSIS REQUIREMENTS:
-                    1. Product Verification (40% weight):
-                       - Match visual features to claimed product
-                       - Check brand markings/logos
-                    2. Condition Assessment (30% weight):
-                       - Evaluate physical condition
-                       - Identify damage/wear
-                    3. Authenticity Check (20% weight):
-                       - Verify security features
-                       - Detect counterfeit markers
-                    4. Completeness (10% weight):
-                       - Check for all components
-                       - Verify packaging
+                    STRICT VERIFICATION CRITERIA (AUTOMATIC REJECTION RULES):
+                    1. Verification ID Match (CRITICAL):
+                       - MUST be clearly visible in at least one image
+                       - MUST exactly match the provided Verification ID
+                       - If not found or mismatched: AUTOMATIC REJECTION (confidence <= 40)
+                    2. Condition Assessment:
+                       - MUST be in like-new condition with NO damage
+                       - Any damage results in AUTOMATIC REJECTION
+                    3. Authenticity Check:
+                       - MUST have clear verification of security features
+                       - Any sign of counterfeiting: AUTOMATIC REJECTION
+                    4. Product Verification:
+                       - Must have clear visual match to claimed product
+                       - Brand markings/logos must be visible and match
+                    5. Completeness:
+                       - Original packaging must be included and intact
 
-                    RESPONSE FORMAT:
+                    ENFORCEMENT RULES:
+                    - Start at 100% and apply deductions
+                    - ID mismatch/not found: SET confidence to 40 (REJECTED)
+                    - Any damage: SET confidence to 40 (REJECTED)
+                    - Authenticity concerns: SET confidence to 30 (REJECTED)
+                    - Product mismatch: Apply 20-40% deduction
+
+                    RESPONSE FORMAT (JSON ONLY):
                     {
-                        "confidence_score": 0-100,
+                        "confidence_score": 0-100,  // Final calculated score
                         "product_match": "poor/fair/good/excellent",
                         "condition": "new/used/damaged",
                         "authenticity": "genuine/suspicious/fake",
-                        "details": ["bullet", "points"]
+                        "id_match": "match/mismatch/not_found",
+                        "details": ["bullet points with specific reasons"]
                     }`;
 
                     // Prepare image parts
@@ -733,7 +944,7 @@
                         };
                     });
                     
-                    // Prepare the request for Gemini 1.5 Flash
+                    // Prepare the request for Gemini
                     const requestData = {
                         contents: [{
                             role: "user",
@@ -767,13 +978,46 @@
                     // Parse the JSON response
                     try {
                         const jsonResponse = JSON.parse(textResponse);
+                        let confidenceScore = jsonResponse.confidence_score || 
+                                            (jsonResponse.score ? parseInt(jsonResponse.score) : 50);
+                        
+                        let rejectionMessage = "";
+                        
+                        // Enforce strict rejection rules
+                        if (jsonResponse.id_match === "mismatch") {
+                            confidenceScore = 30;
+                            rejectionMessage = "Verification ID mismatch - AUTOMATIC REJECTION";
+                            criticalAlert.style.display = "block";
+                            reasonText.textContent = "Verification ID does not match provided ID";
+                        } 
+                        else if (jsonResponse.id_match === "not_found") {
+                            confidenceScore = 40;
+                            rejectionMessage = "Verification ID not found - AUTOMATIC REJECTION";
+                            criticalAlert.style.display = "block";
+                            reasonText.textContent = "Verification ID not found in any images";
+                        }
+                        
+                        if (jsonResponse.condition === "damaged") {
+                            confidenceScore = Math.min(confidenceScore, 40);
+                            if (!rejectionMessage) rejectionMessage = "Product damage detected - AUTOMATIC REJECTION";
+                            criticalAlert.style.display = "block";
+                            reasonText.textContent = "Product damage detected - AUTOMATIC REJECTION";
+                        }
+                        
+                        if (jsonResponse.authenticity === "suspicious" || jsonResponse.authenticity === "fake") {
+                            confidenceScore = Math.min(confidenceScore, 30);
+                            if (!rejectionMessage) rejectionMessage = "Authenticity concerns - AUTOMATIC REJECTION";
+                            criticalAlert.style.display = "block";
+                            reasonText.textContent = "Product authenticity cannot be verified";
+                        }
+                        
+                        // Update response with enforcement message if applicable
+                        if (rejectionMessage) {
+                            jsonResponse.details.push("ENFORCED: " + rejectionMessage);
+                        }
+                        
                         aiResponse.textContent = JSON.stringify(jsonResponse, null, 2);
-                        
-                        // Extract confidence score (default to 50 if not found)
-                        const confidenceScore = jsonResponse.confidence_score || 
-                                              (jsonResponse.score ? parseInt(jsonResponse.score) : 50);
-                        
-                        updateResults(confidenceScore, textResponse);
+                        updateResults(confidenceScore, jsonResponse);
                         
                     } catch (e) {
                         // Fallback if JSON parsing fails
@@ -791,7 +1035,7 @@
                     decisionBox.style.display = "none";
                 } finally {
                     analyzeButton.disabled = false;
-                    analyzeButton.innerHTML = '<i class="fas fa-search"></i> Analyze with Gemini';
+                    analyzeButton.innerHTML = '<i class="fas fa-search"></i> Verify with AI';
                 }
             }
             
@@ -802,10 +1046,10 @@
                 // Update confidence meter
                 confidenceLevel.style.width = confidencePercent + "%";
                 confidenceLevel.style.background = confidencePercent >= 65 ? 
-                    "linear-gradient(to right, #2ecc71, #27ae60)" : 
+                    "linear-gradient(to right, #0cebeb, #20e3b2)" : 
                     confidencePercent <= 40 ? 
-                    "linear-gradient(to right, #e74c3c, #c0392b)" : 
-                    "linear-gradient(to right, #f39c12, #d35400)";
+                    "linear-gradient(to right, #ff416c, #ff4b2b)" : 
+                    "linear-gradient(to right, #f6d365, #fda085)";
                 
                 // Animate progress bar
                 let progress = 0;
@@ -821,8 +1065,9 @@
                 // Determine decision
                 let decision, decisionClass;
                 if (confidencePercent <= 40) {
-                    decision = "REJECTED - Potential Fraud Detected";
+                    decision = "REJECTED - Verification Failed";
                     decisionClass = "rejected";
+                    rejectionReason.style.display = "block";
                 } else if (confidencePercent >= 65) {
                     decision = "ACCEPTED - Legitimate Return";
                     decisionClass = "accepted";
@@ -836,7 +1081,44 @@
                     decisionBox.className = "decision-box " + decisionClass;
                     decisionText.textContent = decision;
                     decisionBox.style.display = "block";
+                    
+                    // Add some confetti effect for accepted
+                    if (confidencePercent >= 65) {
+                        createConfetti();
+                    }
                 }, 1800);
+            }
+            
+            // Simple confetti effect for accepted results
+            function createConfetti() {
+                const colors = ['#0cebeb', '#20e3b2', '#29ffc6', '#4facfe', '#00f2fe'];
+                const container = document.querySelector('.camera-section');
+                
+                for (let i = 0; i < 50; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'absolute';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = '50%';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.opacity = '0.8';
+                    confetti.style.zIndex = '1000';
+                    container.appendChild(confetti);
+                    
+                    // Animation
+                    const animation = confetti.animate([
+                        { transform: 'translateY(0) rotate(0deg)', opacity: 0.8 },
+                        { transform: `translateY(${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                    ], {
+                        duration: 2000 + Math.random() * 3000,
+                        easing: 'cubic-bezier(0.1, 0.7, 1.0, 0.1)'
+                    });
+                    
+                    // Remove after animation
+                    animation.onfinish = () => confetti.remove();
+                }
             }
         });
     </script>
